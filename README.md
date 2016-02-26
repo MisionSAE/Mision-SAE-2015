@@ -2,7 +2,7 @@
 
 En este repositorio se presenta y deja a disposición de los interesados material generado en la edición 2015 del Proyecto Misión SAE. En el mismo se podrá encontrar el firmware y hardware (Próximamente) desarrollados para el vuelo del prototipo del dispositivo SAE, así como plantillas y ejemplos de trabajo para la programación de los dispositivos.
 
-<b>Estructura del repositorio</b>
+<h1>Estructura del repositorio</h1>
 
 * **Prototipo SAE:** Código fuente y diseño de hardware utilizados en la construcción del prototipo del dispositivo SAE.
 
