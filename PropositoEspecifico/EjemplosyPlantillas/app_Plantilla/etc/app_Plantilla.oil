@@ -1,0 +1,184 @@
+OSEK OSEK {
+
+OS	ExampleOS {
+    STATUS 			= EXTENDED;
+    ERRORHOOK 		= TRUE;
+    PRETASKHOOK 	= FALSE;
+    POSTTASKHOOK 	= FALSE;
+    STARTUPHOOK 	= FALSE;
+    SHUTDOWNHOOK 	= FALSE;
+    USERESSCHEDULER = FALSE;
+    MEMMAP 			= FALSE;
+};
+
+/*****************************************************************************/
+/* INICIO CIAA Y  HARDWARE
+/*****************************************************************************/
+
+/* TareaInicializacion */
+
+TASK TareaInicializacion {
+    PRIORITY	= 20;
+    ACTIVATION 	= 1;
+    AUTOSTART 	= TRUE {
+        APPMODE = AppModeMision;
+    }
+    STACK 		= 512;
+    TYPE 		= BASIC;
+    SCHEDULE 	= NON;
+    RESOURCE 	= POSIXR;
+    EVENT 		= POSIXE;
+}
+
+/*****************************************************************************/
+/* MISION
+/*****************************************************************************/
+
+/* TareaMisionPrimaria */
+/*****************************************************************************/
+
+TASK TareaMisionPrimaria {
+    PRIORITY	= 2;
+    ACTIVATION 	= 1;
+    AUTOSTART 	= TRUE {
+        APPMODE = AppModeMision;
+    }
+    STACK 		= 1024;
+    TYPE 		= EXTENDED;
+    SCHEDULE 	= FULL;
+    /*SCHEDULE 	= NON;*/
+    EVENT 		= POSIXE;
+    RESOURCE 	= POSIXR;
+    RESOURCE	= ResourceBusI2C;
+    RESOURCE	= ResourceUART;
+    RESOURCE	= ResourceVariablesMision;
+}
+
+ALARM AlarmaMisionPrimaria {
+    COUNTER = SoftwareCounter;
+    ACTION = ACTIVATETASK {
+        TASK = TareaMisionPrimaria;
+    }
+}
+
+/* TareaMisionSecundaria */
+/*****************************************************************************/
+
+TASK TareaMisionSecundaria {
+    PRIORITY 	= 1;
+    ACTIVATION 	= 1;
+    AUTOSTART 	= TRUE {
+        APPMODE = AppModeMision;
+    }
+    STACK 		= 1024;
+    TYPE 		= EXTENDED;
+    SCHEDULE 	= FULL;
+    /*SCHEDULE 	= NON;*/
+    EVENT 		= POSIXE;
+    RESOURCE 	= POSIXR;
+    RESOURCE	= ResourceUART;
+    RESOURCE	= ResourceVariablesMision;
+}
+
+ALARM AlarmaMisionSecundaria {
+    COUNTER = SoftwareCounter;
+    ACTION = ACTIVATETASK {
+        TASK = TareaMisionSecundaria;
+    }
+}
+
+/* TareaLeerSensores */
+/*****************************************************************************/
+
+TASK TareaLeerSensores {
+    PRIORITY 	= 3;
+    ACTIVATION 	= 1;
+    AUTOSTART 	= TRUE {
+        APPMODE = AppModeMision;
+    }
+    STACK 		= 1024;
+    TYPE 		= EXTENDED;
+    SCHEDULE 	= FULL;
+    /*SCHEDULE 	= NON;*/
+    RESOURCE 	= POSIXR;
+    EVENT 		= POSIXE;
+    RESOURCE 	= ResourceBusI2C;
+    RESOURCE 	= ResourceVariablesMision;
+}
+
+ALARM AlarmaLeerSensores {
+    COUNTER = SoftwareCounter;
+    ACTION = ACTIVATETASK {
+        TASK = TareaLeerSensores;
+    }
+}
+
+ALARM AlarmaCicloSensores {
+    COUNTER = SoftwareCounter;
+    ACTION = ACTIVATETASK {
+        TASK = TareaLeerSensores;
+    }
+}
+
+/*****************************************************************************/
+
+COUNTER HardwareCounter {
+   MAXALLOWEDVALUE = 100;
+   TICKSPERBASE = 1;
+   MINCYCLE = 1;
+   TYPE = HARDWARE;
+   COUNTER = HWCOUNTER0;
+};
+
+COUNTER SoftwareCounter {
+   MAXALLOWEDVALUE = 2000;
+   TICKSPERBASE = 1;
+   MINCYCLE = 1;
+   TYPE = SOFTWARE;
+};
+
+/*****************************************************************************/
+/*
+ALARM IncrementSWCounterMision {
+   COUNTER = HardwareCounter;
+   ACTION = INCREMENT {
+      COUNTER = SoftwareCounter;
+   };
+   AUTOSTART = TRUE {
+      APPMODE = AppModeMision;
+      ALARMTIME = 1;
+      CYCLETIME = 1;
+   };
+};
+
+*/
+/*****************************************************************************/
+
+RESOURCE	= POSIXR;
+EVENT 		= POSIXE;
+APPMODE 	= AppModeMision;
+RESOURCE	= ResourceVariablesMision;
+RESOURCE	= ResourceBusI2C;
+RESOURCE	= ResourceUART;
+
+/*****************************************************************************/
+
+ISR UART0_IRQHandler {
+   INTERRUPT	= UART0;
+   CATEGORY		= 2;
+   PRIORITY 	= 0;
+};
+
+ISR UART2_IRQHandler {
+   INTERRUPT 	= UART2;
+   CATEGORY 	= 2;
+   PRIORITY 	= 0;
+};
+
+ISR UART3_IRQHandler {
+   INTERRUPT 	= UART3;
+   CATEGORY 	= 2;
+   PRIORITY 	= 0;
+};
+
+};
