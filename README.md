@@ -5,9 +5,15 @@ En este repositorio se presenta y deja a disposición de los interesados material
 <b>Estructura del repositorio</b>
 
 * **Prototipo SAE:** Código fuente y diseño de hardware utilizados en la construcción del prototipo del dispositivo SAE.
+
 	* **_Firmware:_** Código fuente del firmware del prototipo SAE y ejemplos de desarrollo.
+
 		* _PrototipoSAE:_ Firmware utilizado en los lanzamientos de validación del prototipo SAE
+		
 			* PropositoGeneral: Firmware de propósito general del prototipo SAE, conformado por la versión 0.6.1 del firmware del Proyecto CIAA (https://github.com/ciaa/Firmware)
+
 			* PropositoEspecifico: Código fuente de las aplicaciones necesarias para llevar adelante la misión primaría de la Misión SAE. Contiene biblioteca para el uso del transmisor XBee, la memoria externa y los sensores de presión, aceleración y temperatura.
+
 		* _MaterialdeTrabajo:_ Plantilla y ejemplos de desarrollo brindados a los participantes de la edición 2015 del proyecto Misión SAE.
+
 	* **_Hardware:_** (Próximamente)
