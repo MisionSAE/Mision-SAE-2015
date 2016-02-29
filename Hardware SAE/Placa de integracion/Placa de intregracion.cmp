@@ -1,0 +1,94 @@
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 19/05/2015 02:52:18 p.m.
+
+BeginCmp
+TimeStamp = /553E8CAC;
+Reference = JP1;
+ValeurCmp = JUMPER;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E8C9C;
+Reference = P1;
+ValeurCmp = CONN_20X2;
+IdModule  = PIN_ARRAY_20X2;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E8C85;
+Reference = P2;
+ValeurCmp = CONN_20X2;
+IdModule  = PIN_ARRAY_20X2;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E8DF0;
+Reference = P3;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E8EA1;
+Reference = P4;
+ValeurCmp = CONN_8;
+IdModule  = pin_array_8x1;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E8EB0;
+Reference = P5;
+ValeurCmp = CONN_6;
+IdModule  = PIN_ARRAY-6X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E8DFD;
+Reference = P6;
+ValeurCmp = CONN_2;
+IdModule  = PIN_ARRAY_2X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /553FDCC8;
+Reference = P7;
+ValeurCmp = CONN_1;
+IdModule  = 1pin;
+EndCmp
+
+BeginCmp
+TimeStamp = /553FDCB6;
+Reference = P8;
+ValeurCmp = CONN_1;
+IdModule  = 1pin;
+EndCmp
+
+BeginCmp
+TimeStamp = /555A15B2;
+Reference = SW1;
+ValeurCmp = DIPS_04;
+IdModule  = DIPS-DS04;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E8A97;
+Reference = U1;
+ValeurCmp = 7805;
+IdModule  = TO220_VERT;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E8A2D;
+Reference = U2;
+ValeurCmp = 24C512;
+IdModule  = DIP-8__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /553E92AB;
+Reference = U3;
+ValeurCmp = XBEE;
+IdModule  = XBee-pro;
+EndCmp
+
+EndListe
